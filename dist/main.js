@@ -664,7 +664,7 @@ var require_file_command = __commonJS({
     };
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.prepareKeyValueMessage = exports.issueFileCommand = void 0;
-    var fs5 = __importStar(require("fs"));
+    var fs2 = __importStar(require("fs"));
     var os3 = __importStar(require("os"));
     var uuid_1 = require_dist();
     var utils_1 = require_utils();
@@ -673,10 +673,10 @@ var require_file_command = __commonJS({
       if (!filePath) {
         throw new Error(`Unable to find environment variable for file command ${command}`);
       }
-      if (!fs5.existsSync(filePath)) {
+      if (!fs2.existsSync(filePath)) {
         throw new Error(`Missing file at path: ${filePath}`);
       }
-      fs5.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os3.EOL}`, {
+      fs2.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os3.EOL}`, {
         encoding: "utf8"
       });
     }
@@ -1023,11 +1023,11 @@ var require_lib = __commonJS({
     };
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -1043,7 +1043,7 @@ var require_lib = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -1128,13 +1128,13 @@ var require_lib = __commonJS({
       }
       readBody() {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve2) => __awaiter(this, void 0, void 0, function* () {
             let output = Buffer.alloc(0);
             this.message.on("data", (chunk) => {
               output = Buffer.concat([output, chunk]);
             });
             this.message.on("end", () => {
-              resolve(output.toString());
+              resolve2(output.toString());
             });
           }));
         });
@@ -1326,14 +1326,14 @@ var require_lib = __commonJS({
       }
       requestRaw(info2, data) {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve, reject) => {
+          return new Promise((resolve2, reject) => {
             function callbackForResult(err, res) {
               if (err) {
                 reject(err);
               } else if (!res) {
                 reject(new Error("Unknown error"));
               } else {
-                resolve(res);
+                resolve2(res);
               }
             }
             this.requestRawWithCallback(info2, data, callbackForResult);
@@ -1478,12 +1478,12 @@ var require_lib = __commonJS({
         return __awaiter(this, void 0, void 0, function* () {
           retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
           const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
-          return new Promise((resolve) => setTimeout(() => resolve(), ms));
+          return new Promise((resolve2) => setTimeout(() => resolve2(), ms));
         });
       }
       _processResponse(res, options) {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve2, reject) => __awaiter(this, void 0, void 0, function* () {
             const statusCode = res.message.statusCode || 0;
             const response = {
               statusCode,
@@ -1491,7 +1491,7 @@ var require_lib = __commonJS({
               headers: {}
             };
             if (statusCode === HttpCodes.NotFound) {
-              resolve(response);
+              resolve2(response);
             }
             function dateTimeDeserializer(key, value) {
               if (typeof value === "string") {
@@ -1530,7 +1530,7 @@ var require_lib = __commonJS({
               err.result = response.result;
               reject(err);
             } else {
-              resolve(response);
+              resolve2(response);
             }
           }));
         });
@@ -1547,11 +1547,11 @@ var require_auth = __commonJS({
     "use strict";
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -1567,7 +1567,7 @@ var require_auth = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -1644,11 +1644,11 @@ var require_oidc_utils = __commonJS({
     "use strict";
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -1664,7 +1664,7 @@ var require_oidc_utils = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -1742,11 +1742,11 @@ var require_summary = __commonJS({
     "use strict";
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -1762,7 +1762,7 @@ var require_summary = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -1935,7 +1935,7 @@ var require_path_utils = __commonJS({
     };
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = void 0;
-    var path5 = __importStar(require("path"));
+    var path3 = __importStar(require("path"));
     function toPosixPath(pth) {
       return pth.replace(/[\\]/g, "/");
     }
@@ -1945,7 +1945,7 @@ var require_path_utils = __commonJS({
     }
     exports.toWin32Path = toWin32Path;
     function toPlatformPath(pth) {
-      return pth.replace(/[/\\]/g, path5.sep);
+      return pth.replace(/[/\\]/g, path3.sep);
     }
     exports.toPlatformPath = toPlatformPath;
   }
@@ -1985,11 +1985,11 @@ var require_core = __commonJS({
     };
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -2005,7 +2005,7 @@ var require_core = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -2016,7 +2016,7 @@ var require_core = __commonJS({
     var file_command_1 = require_file_command();
     var utils_1 = require_utils();
     var os3 = __importStar(require("os"));
-    var path5 = __importStar(require("path"));
+    var path3 = __importStar(require("path"));
     var oidc_utils_1 = require_oidc_utils();
     var ExitCode;
     (function(ExitCode2) {
@@ -2044,7 +2044,7 @@ var require_core = __commonJS({
       } else {
         command_1.issueCommand("add-path", {}, inputPath);
       }
-      process.env["PATH"] = `${inputPath}${path5.delimiter}${process.env["PATH"]}`;
+      process.env["PATH"] = `${inputPath}${path3.delimiter}${process.env["PATH"]}`;
     }
     exports.addPath = addPath;
     function getInput2(name, options) {
@@ -5617,14 +5617,14 @@ var require_url_state_machine = __commonJS({
       return url.replace(/\u0009|\u000A|\u000D/g, "");
     }
     function shortenPath(url) {
-      const path5 = url.path;
-      if (path5.length === 0) {
+      const path3 = url.path;
+      if (path3.length === 0) {
         return;
       }
-      if (url.scheme === "file" && path5.length === 1 && isNormalizedWindowsDriveLetter(path5[0])) {
+      if (url.scheme === "file" && path3.length === 1 && isNormalizedWindowsDriveLetter(path3[0])) {
         return;
       }
-      path5.pop();
+      path3.pop();
     }
     function includesCredentials(url) {
       return url.username !== "" || url.password !== "";
@@ -6914,7 +6914,7 @@ var require_lib3 = __commonJS({
       let accum = [];
       let accumBytes = 0;
       let abort = false;
-      return new Body.Promise(function(resolve, reject) {
+      return new Body.Promise(function(resolve2, reject) {
         let resTimeout;
         if (_this4.timeout) {
           resTimeout = setTimeout(function() {
@@ -6948,7 +6948,7 @@ var require_lib3 = __commonJS({
           }
           clearTimeout(resTimeout);
           try {
-            resolve(Buffer.concat(accum, accumBytes));
+            resolve2(Buffer.concat(accum, accumBytes));
           } catch (err) {
             reject(new FetchError(`Could not create Buffer from response body for ${_this4.url}: ${err.message}`, "system", err));
           }
@@ -7542,7 +7542,7 @@ var require_lib3 = __commonJS({
         throw new Error("native promise missing, set fetch.Promise to your favorite alternative");
       }
       Body.Promise = fetch.Promise;
-      return new fetch.Promise(function(resolve, reject) {
+      return new fetch.Promise(function(resolve2, reject) {
         const request = new Request(url, opts);
         const options = getNodeRequestOptions(request);
         const send = (options.protocol === "https:" ? https : http).request;
@@ -7654,7 +7654,7 @@ var require_lib3 = __commonJS({
                   requestOpts.body = void 0;
                   requestOpts.headers.delete("content-length");
                 }
-                resolve(fetch(new Request(locationURL, requestOpts)));
+                resolve2(fetch(new Request(locationURL, requestOpts)));
                 finalize();
                 return;
             }
@@ -7676,7 +7676,7 @@ var require_lib3 = __commonJS({
           const codings = headers.get("Content-Encoding");
           if (!request.compress || request.method === "HEAD" || codings === null || res.statusCode === 204 || res.statusCode === 304) {
             response = new Response(body, response_options);
-            resolve(response);
+            resolve2(response);
             return;
           }
           const zlibOptions = {
@@ -7686,7 +7686,7 @@ var require_lib3 = __commonJS({
           if (codings == "gzip" || codings == "x-gzip") {
             body = body.pipe(zlib.createGunzip(zlibOptions));
             response = new Response(body, response_options);
-            resolve(response);
+            resolve2(response);
             return;
           }
           if (codings == "deflate" || codings == "x-deflate") {
@@ -7698,18 +7698,18 @@ var require_lib3 = __commonJS({
                 body = body.pipe(zlib.createInflateRaw());
               }
               response = new Response(body, response_options);
-              resolve(response);
+              resolve2(response);
             });
             return;
           }
           if (codings == "br" && typeof zlib.createBrotliDecompress === "function") {
             body = body.pipe(zlib.createBrotliDecompress());
             response = new Response(body, response_options);
-            resolve(response);
+            resolve2(response);
             return;
           }
           response = new Response(body, response_options);
-          resolve(response);
+          resolve2(response);
         });
         writeToStream(req, request);
       });
@@ -8138,12 +8138,12 @@ var require_dist_node7 = __commonJS({
         octokit.log.debug("request", options);
         const start = Date.now();
         const requestOptions = octokit.request.endpoint.parse(options);
-        const path5 = requestOptions.url.replace(options.baseUrl, "");
+        const path3 = requestOptions.url.replace(options.baseUrl, "");
         return request(options).then((response) => {
-          octokit.log.info(`${requestOptions.method} ${path5} - ${response.status} in ${Date.now() - start}ms`);
+          octokit.log.info(`${requestOptions.method} ${path3} - ${response.status} in ${Date.now() - start}ms`);
           return response;
         }).catch((error) => {
-          octokit.log.info(`${requestOptions.method} ${path5} - ${error.status} in ${Date.now() - start}ms`);
+          octokit.log.info(`${requestOptions.method} ${path3} - ${error.status} in ${Date.now() - start}ms`);
           throw error;
         });
       });
@@ -21518,8 +21518,8 @@ var require_windows = __commonJS({
   "node_modules/isexe/windows.js"(exports, module2) {
     module2.exports = isexe;
     isexe.sync = sync;
-    var fs5 = require("fs");
-    function checkPathExt(path5, options) {
+    var fs2 = require("fs");
+    function checkPathExt(path3, options) {
       var pathext = options.pathExt !== void 0 ? options.pathExt : process.env.PATHEXT;
       if (!pathext) {
         return true;
@@ -21530,25 +21530,25 @@ var require_windows = __commonJS({
       }
       for (var i = 0; i < pathext.length; i++) {
         var p = pathext[i].toLowerCase();
-        if (p && path5.substr(-p.length).toLowerCase() === p) {
+        if (p && path3.substr(-p.length).toLowerCase() === p) {
           return true;
         }
       }
       return false;
     }
-    function checkStat(stat, path5, options) {
+    function checkStat(stat, path3, options) {
       if (!stat.isSymbolicLink() && !stat.isFile()) {
         return false;
       }
-      return checkPathExt(path5, options);
+      return checkPathExt(path3, options);
     }
-    function isexe(path5, options, cb) {
-      fs5.stat(path5, function(er, stat) {
-        cb(er, er ? false : checkStat(stat, path5, options));
+    function isexe(path3, options, cb) {
+      fs2.stat(path3, function(er, stat) {
+        cb(er, er ? false : checkStat(stat, path3, options));
       });
     }
-    function sync(path5, options) {
-      return checkStat(fs5.statSync(path5), path5, options);
+    function sync(path3, options) {
+      return checkStat(fs2.statSync(path3), path3, options);
     }
   }
 });
@@ -21558,14 +21558,14 @@ var require_mode = __commonJS({
   "node_modules/isexe/mode.js"(exports, module2) {
     module2.exports = isexe;
     isexe.sync = sync;
-    var fs5 = require("fs");
-    function isexe(path5, options, cb) {
-      fs5.stat(path5, function(er, stat) {
+    var fs2 = require("fs");
+    function isexe(path3, options, cb) {
+      fs2.stat(path3, function(er, stat) {
         cb(er, er ? false : checkStat(stat, options));
       });
     }
-    function sync(path5, options) {
-      return checkStat(fs5.statSync(path5), options);
+    function sync(path3, options) {
+      return checkStat(fs2.statSync(path3), options);
     }
     function checkStat(stat, options) {
       return stat.isFile() && checkMode(stat, options);
@@ -21589,16 +21589,16 @@ var require_mode = __commonJS({
 // node_modules/isexe/index.js
 var require_isexe = __commonJS({
   "node_modules/isexe/index.js"(exports, module2) {
-    var fs5 = require("fs");
-    var core5;
+    var fs2 = require("fs");
+    var core4;
     if (process.platform === "win32" || global.TESTING_WINDOWS) {
-      core5 = require_windows();
+      core4 = require_windows();
     } else {
-      core5 = require_mode();
+      core4 = require_mode();
     }
     module2.exports = isexe;
     isexe.sync = sync;
-    function isexe(path5, options, cb) {
+    function isexe(path3, options, cb) {
       if (typeof options === "function") {
         cb = options;
         options = {};
@@ -21607,17 +21607,17 @@ var require_isexe = __commonJS({
         if (typeof Promise !== "function") {
           throw new TypeError("callback not provided");
         }
-        return new Promise(function(resolve, reject) {
-          isexe(path5, options || {}, function(er, is) {
+        return new Promise(function(resolve2, reject) {
+          isexe(path3, options || {}, function(er, is) {
             if (er) {
               reject(er);
             } else {
-              resolve(is);
+              resolve2(is);
             }
           });
         });
       }
-      core5(path5, options || {}, function(er, is) {
+      core4(path3, options || {}, function(er, is) {
         if (er) {
           if (er.code === "EACCES" || options && options.ignoreErrors) {
             er = null;
@@ -21627,9 +21627,9 @@ var require_isexe = __commonJS({
         cb(er, is);
       });
     }
-    function sync(path5, options) {
+    function sync(path3, options) {
       try {
-        return core5.sync(path5, options || {});
+        return core4.sync(path3, options || {});
       } catch (er) {
         if (options && options.ignoreErrors || er.code === "EACCES") {
           return false;
@@ -21647,7 +21647,7 @@ var require_which = __commonJS({
     module2.exports = which;
     which.sync = whichSync;
     var isWindows = process.platform === "win32" || process.env.OSTYPE === "cygwin" || process.env.OSTYPE === "msys";
-    var path5 = require("path");
+    var path3 = require("path");
     var COLON = isWindows ? ";" : ":";
     var isexe = require_isexe();
     function getNotFoundError(cmd) {
@@ -21696,7 +21696,7 @@ var require_which = __commonJS({
         var pathPart = pathEnv[i];
         if (pathPart.charAt(0) === '"' && pathPart.slice(-1) === '"')
           pathPart = pathPart.slice(1, -1);
-        var p = path5.join(pathPart, cmd);
+        var p = path3.join(pathPart, cmd);
         if (!pathPart && /^\.[\\\/]/.test(cmd)) {
           p = cmd.slice(0, 2) + p;
         }
@@ -21728,7 +21728,7 @@ var require_which = __commonJS({
         var pathPart = pathEnv[i];
         if (pathPart.charAt(0) === '"' && pathPart.slice(-1) === '"')
           pathPart = pathPart.slice(1, -1);
-        var p = path5.join(pathPart, cmd);
+        var p = path3.join(pathPart, cmd);
         if (!pathPart && /^\.[\\\/]/.test(cmd)) {
           p = cmd.slice(0, 2) + p;
         }
@@ -21776,7 +21776,7 @@ var require_path_key = __commonJS({
 var require_resolveCommand = __commonJS({
   "node_modules/cross-spawn/lib/util/resolveCommand.js"(exports, module2) {
     "use strict";
-    var path5 = require("path");
+    var path3 = require("path");
     var which = require_which();
     var pathKey = require_path_key()();
     function resolveCommandAttempt(parsed, withoutPathExt) {
@@ -21792,14 +21792,14 @@ var require_resolveCommand = __commonJS({
       try {
         resolved = which.sync(parsed.command, {
           path: (parsed.options.env || process.env)[pathKey],
-          pathExt: withoutPathExt ? path5.delimiter : void 0
+          pathExt: withoutPathExt ? path3.delimiter : void 0
         });
       } catch (e) {
       } finally {
         process.chdir(cwd);
       }
       if (resolved) {
-        resolved = path5.resolve(hasCustomCwd ? parsed.options.cwd : "", resolved);
+        resolved = path3.resolve(hasCustomCwd ? parsed.options.cwd : "", resolved);
       }
       return resolved;
     }
@@ -21865,7 +21865,7 @@ var require_shebang_command = __commonJS({
 var require_readShebang = __commonJS({
   "node_modules/cross-spawn/lib/util/readShebang.js"(exports, module2) {
     "use strict";
-    var fs5 = require("fs");
+    var fs2 = require("fs");
     var shebangCommand = require_shebang_command();
     function readShebang(command) {
       const size = 150;
@@ -21878,9 +21878,9 @@ var require_readShebang = __commonJS({
       }
       let fd;
       try {
-        fd = fs5.openSync(command, "r");
-        fs5.readSync(fd, buffer, 0, size, 0);
-        fs5.closeSync(fd);
+        fd = fs2.openSync(command, "r");
+        fs2.readSync(fd, buffer, 0, size, 0);
+        fs2.closeSync(fd);
       } catch (e) {
       }
       return shebangCommand(buffer.toString());
@@ -22942,7 +22942,7 @@ var require_semver3 = __commonJS({
 var require_parse3 = __commonJS({
   "node_modules/cross-spawn/lib/parse.js"(exports, module2) {
     "use strict";
-    var path5 = require("path");
+    var path3 = require("path");
     var niceTry = require_src();
     var resolveCommand = require_resolveCommand();
     var escape = require_escape();
@@ -22970,7 +22970,7 @@ var require_parse3 = __commonJS({
       const needsShell = !isExecutableRegExp.test(commandFile);
       if (parsed.options.forceShell || needsShell) {
         const needsDoubleEscapeMetaChars = isCmdShimRegExp.test(commandFile);
-        parsed.command = path5.normalize(parsed.command);
+        parsed.command = path3.normalize(parsed.command);
         parsed.command = escape.command(parsed.command);
         parsed.args = parsed.args.map((arg) => escape.argument(arg, needsDoubleEscapeMetaChars));
         const shellCommand = [parsed.command].concat(parsed.args).join(" ");
@@ -23123,7 +23123,7 @@ var require_strip_eof = __commonJS({
 var require_npm_run_path = __commonJS({
   "node_modules/npm-run-path/index.js"(exports, module2) {
     "use strict";
-    var path5 = require("path");
+    var path3 = require("path");
     var pathKey = require_path_key();
     module2.exports = (opts) => {
       opts = Object.assign({
@@ -23131,24 +23131,24 @@ var require_npm_run_path = __commonJS({
         path: process.env[pathKey()]
       }, opts);
       let prev;
-      let pth = path5.resolve(opts.cwd);
+      let pth = path3.resolve(opts.cwd);
       const ret = [];
       while (prev !== pth) {
-        ret.push(path5.join(pth, "node_modules/.bin"));
+        ret.push(path3.join(pth, "node_modules/.bin"));
         prev = pth;
-        pth = path5.resolve(pth, "..");
+        pth = path3.resolve(pth, "..");
       }
-      ret.push(path5.dirname(process.execPath));
-      return ret.concat(opts.path).join(path5.delimiter);
+      ret.push(path3.dirname(process.execPath));
+      return ret.concat(opts.path).join(path3.delimiter);
     };
     module2.exports.env = (opts) => {
       opts = Object.assign({
         env: process.env
       }, opts);
       const env = Object.assign({}, opts.env);
-      const path6 = pathKey({ env });
-      opts.path = env[path6];
-      env[path6] = module2.exports(opts);
+      const path4 = pathKey({ env });
+      opts.path = env[path4];
+      env[path4] = module2.exports(opts);
       return env;
     };
   }
@@ -23276,7 +23276,7 @@ var require_pump = __commonJS({
   "node_modules/pump/index.js"(exports, module2) {
     var once = require_once();
     var eos = require_end_of_stream();
-    var fs5 = require("fs");
+    var fs2 = require("fs");
     var noop = function() {
     };
     var ancient = /^v?\.0/.test(process.version);
@@ -23286,9 +23286,9 @@ var require_pump = __commonJS({
     var isFS = function(stream) {
       if (!ancient)
         return false;
-      if (!fs5)
+      if (!fs2)
         return false;
-      return (stream instanceof (fs5.ReadStream || noop) || stream instanceof (fs5.WriteStream || noop)) && isFn(stream.close);
+      return (stream instanceof (fs2.ReadStream || noop) || stream instanceof (fs2.WriteStream || noop)) && isFn(stream.close);
     };
     var isRequest = function(stream) {
       return stream.setHeader && isFn(stream.abort);
@@ -23419,7 +23419,7 @@ var require_get_stream = __commonJS({
       options = Object.assign({ maxBuffer: Infinity }, options);
       const { maxBuffer } = options;
       let stream;
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve2, reject) => {
         const rejectPromise = (error) => {
           if (error) {
             error.bufferedData = stream.getBufferedValue();
@@ -23431,7 +23431,7 @@ var require_get_stream = __commonJS({
             rejectPromise(error);
             return;
           }
-          resolve();
+          resolve2();
         });
         stream.on("data", () => {
           if (stream.getBufferedLength() > maxBuffer) {
@@ -23455,11 +23455,11 @@ var require_p_finally = __commonJS({
       onFinally = onFinally || (() => {
       });
       return promise.then(
-        (val) => new Promise((resolve) => {
-          resolve(onFinally());
+        (val) => new Promise((resolve2) => {
+          resolve2(onFinally());
         }).then(() => val),
-        (err) => new Promise((resolve) => {
-          resolve(onFinally());
+        (err) => new Promise((resolve2) => {
+          resolve2(onFinally());
         }).then(() => {
           throw err;
         })
@@ -23733,7 +23733,7 @@ var require_stdio = __commonJS({
 var require_execa = __commonJS({
   "node_modules/execa/index.js"(exports, module2) {
     "use strict";
-    var path5 = require("path");
+    var path3 = require("path");
     var childProcess = require("child_process");
     var crossSpawn = require_cross_spawn();
     var stripEof = require_strip_eof();
@@ -23786,7 +23786,7 @@ var require_execa = __commonJS({
       if (opts.detached) {
         opts.cleanup = false;
       }
-      if (process.platform === "win32" && path5.basename(parsed.command) === "cmd.exe") {
+      if (process.platform === "win32" && path3.basename(parsed.command) === "cmd.exe") {
         parsed.args.unshift("/q");
       }
       return {
@@ -23834,8 +23834,8 @@ var require_execa = __commonJS({
       }
       let ret;
       if (!buffer) {
-        ret = new Promise((resolve, reject) => {
-          process2[stream].once("end", resolve).once("error", reject);
+        ret = new Promise((resolve2, reject) => {
+          process2[stream].once("end", resolve2).once("error", reject);
         });
       } else if (encoding) {
         ret = _getStream(process2[stream], {
@@ -23924,19 +23924,19 @@ ${stderr}${stdout}`;
           spawned.kill(parsed.opts.killSignal);
         }, parsed.opts.timeout);
       }
-      const processDone = new Promise((resolve) => {
+      const processDone = new Promise((resolve2) => {
         spawned.on("exit", (code, signal) => {
           cleanup();
-          resolve({ code, signal });
+          resolve2({ code, signal });
         });
         spawned.on("error", (err) => {
           cleanup();
-          resolve({ error: err });
+          resolve2({ error: err });
         });
         if (spawned.stdin) {
           spawned.stdin.on("error", (err) => {
             cleanup();
-            resolve({ error: err });
+            resolve2({ error: err });
           });
         }
       });
@@ -25219,8 +25219,8 @@ var require_dist_node12 = __commonJS({
     var VERSION = "1.1.2";
     var REGEX = [/^\/search\//, /^\/repos\/[^/]+\/[^/]+\/commits\/[^/]+\/(check-runs|check-suites)([^/]|$)/, /^\/installation\/repositories([^/]|$)/, /^\/user\/installations([^/]|$)/, /^\/repos\/[^/]+\/[^/]+\/actions\/secrets([^/]|$)/, /^\/repos\/[^/]+\/[^/]+\/actions\/workflows(\/[^/]+\/runs)?([^/]|$)/, /^\/repos\/[^/]+\/[^/]+\/actions\/runs(\/[^/]+\/(artifacts|jobs))?([^/]|$)/];
     function normalizePaginatedListResponse(octokit, url, response) {
-      const path5 = url.replace(octokit.request.endpoint.DEFAULTS.baseUrl, "");
-      const responseNeedsNormalization = REGEX.find((regex) => regex.test(path5));
+      const path3 = url.replace(octokit.request.endpoint.DEFAULTS.baseUrl, "");
+      const responseNeedsNormalization = REGEX.find((regex) => regex.test(path3));
       if (!responseNeedsNormalization)
         return;
       const incompleteResults = response.data.incomplete_results;
@@ -25241,7 +25241,7 @@ var require_dist_node12 = __commonJS({
       response.data.total_count = totalCount;
       Object.defineProperty(response.data, namespaceKey, {
         get() {
-          octokit.log.warn(`[@octokit/paginate-rest] "response.data.${namespaceKey}" is deprecated for "GET ${path5}". Get the results directly from "response.data"`);
+          octokit.log.warn(`[@octokit/paginate-rest] "response.data.${namespaceKey}" is deprecated for "GET ${path3}". Get the results directly from "response.data"`);
           return Array.from(data);
         }
       });
@@ -25495,11 +25495,11 @@ var require_lodash2 = __commonJS({
       }
       return -1;
     }
-    function baseGet(object, path5) {
-      path5 = isKey(path5, object) ? [path5] : castPath(path5);
-      var index = 0, length = path5.length;
+    function baseGet(object, path3) {
+      path3 = isKey(path3, object) ? [path3] : castPath(path3);
+      var index = 0, length = path3.length;
       while (object != null && index < length) {
-        object = object[toKey(path5[index++])];
+        object = object[toKey(path3[index++])];
       }
       return index && index == length ? object : void 0;
     }
@@ -25617,8 +25617,8 @@ var require_lodash2 = __commonJS({
     function toString(value) {
       return value == null ? "" : baseToString(value);
     }
-    function get(object, path5, defaultValue) {
-      var result = object == null ? void 0 : baseGet(object, path5);
+    function get(object, path3, defaultValue) {
+      var result = object == null ? void 0 : baseGet(object, path3);
       return result === void 0 ? defaultValue : result;
     }
     module2.exports = get;
@@ -25815,19 +25815,19 @@ var require_lodash3 = __commonJS({
       var pattern = isFunction(value) || isHostObject(value) ? reIsNative : reIsHostCtor;
       return pattern.test(toSource(value));
     }
-    function baseSet(object, path5, value, customizer) {
+    function baseSet(object, path3, value, customizer) {
       if (!isObject(object)) {
         return object;
       }
-      path5 = isKey(path5, object) ? [path5] : castPath(path5);
-      var index = -1, length = path5.length, lastIndex = length - 1, nested = object;
+      path3 = isKey(path3, object) ? [path3] : castPath(path3);
+      var index = -1, length = path3.length, lastIndex = length - 1, nested = object;
       while (nested != null && ++index < length) {
-        var key = toKey(path5[index]), newValue = value;
+        var key = toKey(path3[index]), newValue = value;
         if (index != lastIndex) {
           var objValue = nested[key];
           newValue = customizer ? customizer(objValue, key, nested) : void 0;
           if (newValue === void 0) {
-            newValue = isObject(objValue) ? objValue : isIndex(path5[index + 1]) ? [] : {};
+            newValue = isObject(objValue) ? objValue : isIndex(path3[index + 1]) ? [] : {};
           }
         }
         assignValue(nested, key, newValue);
@@ -25946,8 +25946,8 @@ var require_lodash3 = __commonJS({
     function toString(value) {
       return value == null ? "" : baseToString(value);
     }
-    function set(object, path5, value) {
-      return object == null ? object : baseSet(object, path5, value);
+    function set(object, path3, value) {
+      return object == null ? object : baseSet(object, path3, value);
     }
     module2.exports = set;
   }
@@ -26336,8 +26336,8 @@ var require_context = __commonJS({
           if (fs_1.existsSync(process.env.GITHUB_EVENT_PATH)) {
             this.payload = JSON.parse(fs_1.readFileSync(process.env.GITHUB_EVENT_PATH, { encoding: "utf8" }));
           } else {
-            const path5 = process.env.GITHUB_EVENT_PATH;
-            process.stdout.write(`GITHUB_EVENT_PATH ${path5} does not exist${os_1.EOL}`);
+            const path3 = process.env.GITHUB_EVENT_PATH;
+            process.stdout.write(`GITHUB_EVENT_PATH ${path3} does not exist${os_1.EOL}`);
           }
         }
         this.eventName = process.env.GITHUB_EVENT_NAME;
@@ -26505,13 +26505,13 @@ var require_http_client = __commonJS({
         this.message = message;
       }
       readBody() {
-        return new Promise(async (resolve, reject) => {
+        return new Promise(async (resolve2, reject) => {
           let output = Buffer.alloc(0);
           this.message.on("data", (chunk) => {
             output = Buffer.concat([output, chunk]);
           });
           this.message.on("end", () => {
-            resolve(output.toString());
+            resolve2(output.toString());
           });
         });
       }
@@ -26675,12 +26675,12 @@ var require_http_client = __commonJS({
         this._disposed = true;
       }
       requestRaw(info2, data) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve2, reject) => {
           let callbackForResult = function(err, res) {
             if (err) {
               reject(err);
             }
-            resolve(res);
+            resolve2(res);
           };
           this.requestRawWithCallback(info2, data, callbackForResult);
         });
@@ -26828,7 +26828,7 @@ var require_http_client = __commonJS({
       _performExponentialBackoff(retryNumber) {
         retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
         const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
-        return new Promise((resolve) => setTimeout(() => resolve(), ms));
+        return new Promise((resolve2) => setTimeout(() => resolve2(), ms));
       }
       static dateTimeDeserializer(key, value) {
         if (typeof value === "string") {
@@ -26840,7 +26840,7 @@ var require_http_client = __commonJS({
         return value;
       }
       async _processResponse(res, options) {
-        return new Promise(async (resolve, reject) => {
+        return new Promise(async (resolve2, reject) => {
           const statusCode = res.message.statusCode;
           const response = {
             statusCode,
@@ -26848,7 +26848,7 @@ var require_http_client = __commonJS({
             headers: {}
           };
           if (statusCode == HttpCodes.NotFound) {
-            resolve(response);
+            resolve2(response);
           }
           let obj;
           let contents;
@@ -26878,7 +26878,7 @@ var require_http_client = __commonJS({
             err.result = response.result;
             reject(err);
           } else {
-            resolve(response);
+            resolve2(response);
           }
         });
       }
@@ -26990,13 +26990,13 @@ var require_github = __commonJS({
 });
 
 // src/main.js
-var core4 = __toESM(require_core(), 1);
+var core3 = __toESM(require_core(), 1);
 var import_os2 = __toESM(require("os"), 1);
 var import_semver = __toESM(require_semver2(), 1);
 
 // src/lib/setup.js
 var import_core = __toESM(require_core(), 1);
-var import_fs = __toESM(require("fs"), 1);
+var import_fs = require("fs");
 var import_path = __toESM(require("path"), 1);
 var Setup = class {
   static debug() {
@@ -27004,7 +27004,7 @@ var Setup = class {
       ` Available environment variables:
  -> ${Object.keys(process.env).map((i) => i + " :: " + process.env[i]).join("\n -> ")}`
     );
-    const dir = import_fs.default.readdirSync(import_path.default.resolve(process.env.GITHUB_WORKSPACE), { withFileTypes: true }).map((entry) => {
+    const dir = (0, import_fs.readdirSync)(import_path.default.resolve(process.env.GITHUB_WORKSPACE), { withFileTypes: true }).map((entry) => {
       return `${entry.isDirectory() ? "> " : "  - "}${entry.name}`;
     }).join("\n");
     import_core.default.debug(` Working Directory: ${process.env.GITHUB_WORKSPACE}:
@@ -27146,7 +27146,7 @@ var Tag = class {
         type: "commit"
       });
       this._sha = newTag.data.sha;
-      import_core2.default.warning(`Created new tag: ${newTag.data.tag}`);
+      import_core2.default.info(`Created new tag: ${newTag.data.tag}`);
       let newReference;
       try {
         newReference = await github.git.createRef({
@@ -27167,7 +27167,7 @@ var Tag = class {
       this._uri = newReference.data.url;
       this._ref = newReference.data.ref;
       this._message = message;
-      import_core2.default.warning(`Reference ${newReference.data.ref} available at ${newReference.data.url}` + import_os.default.EOL);
+      import_core2.default.info(`Reference ${newReference.data.ref} available at ${newReference.data.url}` + import_os.default.EOL);
     } else {
       import_core2.default.warning("Cannot push tag (it already exists).");
     }
@@ -27175,18 +27175,18 @@ var Tag = class {
 };
 
 // src/lib/regex.js
-var import_fs3 = __toESM(require("fs"), 1);
-var import_path3 = __toESM(require("path"), 1);
+var import_fs3 = require("fs");
+var import_path3 = require("path");
 var Regex = class {
   constructor(root = "./", pattern) {
-    root = import_path3.default.resolve(root);
-    if (import_fs3.default.statSync(root).isDirectory()) {
+    root = (0, import_path3.resolve)(root);
+    if ((0, import_fs3.statSync)(root).isDirectory()) {
       throw new Error(`${root} is a directory. The Regex tag identification strategy requires a file.`);
     }
-    if (!import_fs3.default.existsSync(root)) {
+    if (!existsSync(root)) {
       throw new Error(`"${root}" does not exist.`);
     }
-    this.content = import_fs3.default.readFileSync(root).toString();
+    this.content = (0, import_fs3.readFileSync)(root).toString();
     let content = pattern.exec(this.content);
     if (!content) {
       this._version = null;
@@ -27205,14 +27205,13 @@ var Regex = class {
 };
 
 // src/lib/docker.js
-var import_path4 = __toESM(require("path"), 1);
-var import_fs4 = __toESM(require("fs"), 1);
-var import_core3 = __toESM(require_core(), 1);
+var import_path4 = require("path");
+var import_fs4 = require("fs");
 var Dockerfile = class extends Regex {
   constructor(root = null) {
-    root = import_path4.default.join(process.env.GITHUB_WORKSPACE, root);
-    if (import_fs4.default.statSync(root).isDirectory()) {
-      root = import_path4.default.join(root, "Dockerfile");
+    root = (0, import_path4.join)(process.env.GITHUB_WORKSPACE, root);
+    if ((0, import_fs4.statSync)(root).isDirectory()) {
+      root = (0, import_path4.join)(root, "Dockerfile");
     }
     super(root, /LABEL[\s\t]+version=[\t\s+]?[\"\']?([0-9\.]+)[\"\']?/i);
   }
@@ -27223,87 +27222,88 @@ async function run() {
   try {
     Setup.debug();
     Setup.requireAnyEnv("GITHUB_TOKEN", "INPUT_GITHUB_TOKEN");
-    core4.setOutput("tagcreated", "no");
-    const strategy = (core4.getInput("regex_pattern", { required: false }) || "").trim().length > 0 ? "regex" : (core4.getInput("strategy", { required: false }) || "package").trim().toLowerCase();
-    const root = core4.getInput("root", { required: false }) || core4.getInput("package_root", { required: false }) || (strategy === "composer" ? "./composer.json" : "./");
-    const isDryRun = (core4.getInput("dry_run", { required: false }) || "").trim().toLowerCase() === "true";
-    let version = core4.getInput("root", { required: false });
-    version = version === null || version.trim().length === 0 ? null : version;
-    const pattern = core4.getInput("regex_pattern", { required: false });
-    const versionSemVer = import_semver.default.coerce(version);
-    if (!versionSemVer) {
-      switch (strategy) {
-        case "docker":
-          version = new Dockerfile(root).version;
-          break;
-        case "composer":
-        case "package":
-          version = new Package(root).version;
-          break;
-        case "regex":
-          version = new Regex(root, new RegExp(pattern, "gim")).version;
-          break;
-        default:
-          core4.setFailed(`"${strategy}" is not a recognized tagging strategy. Choose from: 'package' (package.json), 'composer' (composer.json), 'docker' (uses Dockerfile), or 'regex' (JS-based RegExp).`);
-          return;
-      }
+    core3.setOutput("tagcreated", "no");
+    const versionSupplied = core3.getInput("root", { required: false }) !== null && core3.getInput("root", { required: false }) !== void 0 && core3.getInput("root", { required: false }).trim().length > 0;
+    const strategy = versionSupplied ? "manual" : (core3.getInput("regex_pattern", { required: false }) || "").trim().length > 0 ? "regex" : (core3.getInput("strategy", { required: false }) || "package").trim().toLowerCase();
+    const root = core3.getInput("root", { required: false }) || core3.getInput("package_root", { required: false }) || (strategy === "composer" ? "./composer.json" : "./");
+    const isDryRun = (core3.getInput("dry_run", { required: false }) || "").trim().toLowerCase() === "true";
+    let version = core3.getInput("root", { required: false });
+    version = version === null || version.trim().length === v0 ? null : version;
+    const pattern = core3.getInput("regex_pattern", { required: false });
+    switch (strategy) {
+      case "docker":
+        version = new Dockerfile(root).version;
+        break;
+      case "composer":
+      case "package":
+        version = new Package(root).version;
+        break;
+      case "regex":
+        version = new Regex(root, new RegExp(pattern, "gim")).version;
+        break;
+      case "manual":
+        core3.notice(`"${version}" version was manually specified in the action configuration`);
+        break;
+      default:
+        core3.setFailed(`"${strategy}" is not a recognized tagging strategy. Choose from: 'package' (package.json), 'composer' (composer.json), 'docker' (uses Dockerfile), or 'regex' (JS-based RegExp). Specify a version to use the "manual" strategy.`);
+        return;
     }
     const msg = ` using the ${strategy} extraction${strategy === "regex" ? " with the /" + pattern + "/gim pattern." : ""}.`;
     if (!version) {
       throw new Error(`No version identified${msg}`);
     }
-    const minVersion = core4.getInput("min_version", { required: false });
+    const minVersion = core3.getInput("min_version", { required: false });
+    const versionSemVer = import_semver.default.coerce(version);
     const minVersionSemVer = import_semver.default.coerce(minVersion);
     if (!minVersionSemVer) {
-      core4.info(`Skipping min version check. ${minVersion} is not valid SemVer`);
+      core3.info(`Skipping min version check. ${minVersion} is not valid SemVer`);
     }
     if (!versionSemVer) {
-      core4.info(`Skipping min version check. ${version} is not valid SemVer`);
+      core3.info(`Skipping min version check. ${version} is not valid SemVer`);
     }
     if (minVersionSemVer && versionSemVer && import_semver.default.lt(versionSemVer, minVersionSemVer)) {
-      core4.info(`Version "${version}" is lower than minimum "${minVersion}"`);
+      core3.info(`Version "${version}" is lower than minimum "${minVersion}"`);
       return;
     }
-    core4.notice(`Recognized "${version}"${msg}`);
-    core4.setOutput("version", version);
-    core4.debug(` Detected version ${version}`);
+    core3.info(`Recognized "${version}"${msg}`);
+    core3.setOutput("version", version);
+    core3.debug(` Detected version ${version}`);
     const tag = new Tag(
-      core4.getInput("tag_prefix", { required: false }),
+      core3.getInput("tag_prefix", { required: false }),
       version,
-      core4.getInput("tag_suffix", { required: false })
+      core3.getInput("tag_suffix", { required: false })
     );
     if (isDryRun) {
-      core4.notice(`"${tag.name}" tag was not pushed because the dry_run option was set.`);
+      core3.notice(`"${tag.name}" tag was not pushed because the dry_run option was set.`);
     } else {
-      core4.info(`Attempting to create ${tag.name} tag.`);
+      core3.info(`Attempting to create ${tag.name} tag.`);
     }
-    core4.setOutput("tagrequested", tag.name);
-    core4.setOutput("prerelease", tag.prerelease ? "yes" : "no");
-    core4.setOutput("build", tag.build ? "yes" : "no");
+    core3.setOutput("tagrequested", tag.name);
+    core3.setOutput("prerelease", tag.prerelease ? "yes" : "no");
+    core3.setOutput("build", tag.build ? "yes" : "no");
     if (await tag.exists()) {
-      core4.setFailed(`"${tag.name}" tag already exists.` + import_os2.default.EOL);
-      core4.setOutput("tagname", "");
+      core3.setFailed(`"${tag.name}" tag already exists.` + import_os2.default.EOL);
+      core3.setOutput("tagname", "");
       return;
     }
-    tag.message = core4.getInput("tag_message", { required: false }).trim();
+    tag.message = core3.getInput("tag_message", { required: false }).trim();
     if (!isDryRun) {
       await tag.push();
-      core4.setOutput("tagcreated", "yes");
+      core3.setOutput("tagcreated", "yes");
     }
-    core4.setOutput("tagname", tag.name);
-    core4.setOutput("tagsha", tag.sha);
-    core4.setOutput("taguri", tag.uri);
-    core4.setOutput("tagmessage", tag.message);
-    core4.setOutput("tagref", tag.ref);
+    core3.setOutput("tagname", tag.name);
+    core3.setOutput("tagsha", tag.sha);
+    core3.setOutput("taguri", tag.uri);
+    core3.setOutput("tagmessage", tag.message);
+    core3.setOutput("tagref", tag.ref);
   } catch (error) {
-    core4.warning(error.message);
-    core4.warning(error.stack);
-    core4.setOutput("tagname", "");
-    core4.setOutput("tagsha", "");
-    core4.setOutput("taguri", "");
-    core4.setOutput("tagmessage", "");
-    core4.setOutput("tagref", "");
-    core4.setOutput("tagcreated", "no");
+    core3.warning(error.message + "\n" + error.stack);
+    core3.setOutput("tagname", "");
+    core3.setOutput("tagsha", "");
+    core3.setOutput("taguri", "");
+    core3.setOutput("tagmessage", "");
+    core3.setOutput("tagref", "");
+    core3.setOutput("tagcreated", "no");
   }
 }
 run();
