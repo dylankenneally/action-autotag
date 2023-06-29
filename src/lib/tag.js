@@ -1,6 +1,6 @@
 import core from '@actions/core'
 import os from 'os'
-import { Octokit } from 'octokit'
+import { Octokit } from '@octokit/core'
 
 // Get authenticated GitHub client (Ocktokit): https://github.com/actions/toolkit/tree/master/packages/github#usage
 const github = (new Octokit({ auth: process.env.GITHUB_TOKEN || process.env.INPUT_GITHUB_TOKEN })).rest

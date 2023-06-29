@@ -1,0 +1,13 @@
+logs
+*.log
+*.log*
+.*
+!.gitignore
+!.github
+!.dockerignore
+_*
+dist
+
+# feels odd, but we need to check in node_modules for GH actions
+# ref https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action#commit-and-push-your-action-to-github
+# node_modules
