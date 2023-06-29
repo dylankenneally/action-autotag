@@ -82,7 +82,7 @@ async function run () {
       return
     }
 
-    core.notice(`Recognized "${version}"${msg}`)
+    core.info(`Recognized "${version}"${msg}`)
     core.setOutput('version', version)
     core.debug(` Detected version ${version}`)
 
